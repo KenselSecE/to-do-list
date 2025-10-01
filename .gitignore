@@ -1,0 +1,19 @@
+System files
+
+.DS_Store Thumbs.db
+
+Node.js dependencies (for future use)
+
+node_modules/
+
+Environment files
+
+.env
+
+Temporary files
+
+*.log *.tmp
+
+Build output (for future use)
+
+dist/ build/
