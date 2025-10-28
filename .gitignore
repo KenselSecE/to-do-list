@@ -1,19 +1,17 @@
-System files
+# System files
+.DS_Store
+Thumbs.db
 
-.DS_Store Thumbs.db
-
-Node.js dependencies (for future use)
-
+# Node.js dependencies
 node_modules/
 
-Environment files
-
+# Environment files
 .env
 
-Temporary files
+# Temporary files
+*.log
+*.tmp
 
-*.log *.tmp
-
-Build output (for future use)
-
-dist/ build/
+# Build output
+dist/
+build/

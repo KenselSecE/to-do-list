@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="title">To-Do List</title>
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="https://cdn-icons-png.flaticon.com/512/906/906334.png">
+</head>
+
+<body>
+  <div class="container">
+    <h1>
+      <i class="fa-solid fa-list-check" style="color:#4CAF50; margin-right:8px;"></i>
+      <span data-i18n="title">To-Do List</span>
+    </h1>
+
+    <!-- Language selector -->
+    <select id="languageSelect" onchange="changeLanguage()">
+      <option value="en">English</option>
+      <option value="es">Español</option>
+    </select>
+
+    <!-- New task input -->
+    <input type="text" id="taskInput" data-i18n="placeholder" placeholder="New task">
+    <button onclick="addTask()" data-i18n="addButton">Add</button>
+
+    <ul id="taskList"></ul>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

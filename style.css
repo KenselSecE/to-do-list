@@ -1,0 +1,211 @@
+/* ==========================
+   Base styling
+========================== */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  background-color: #f3f4f6;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 500px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* ==========================
+   Form elements
+========================== */
+select, input, button {
+  margin: 8px 0;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 5px #4caf50;
+  outline: none;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background-color: #43a047;
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* ==========================
+   Task list styling
+========================== */
+ul { list-style: none; padding: 0; margin: 0; }
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #e0e0e0;
+  min-height: 52px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  animation: fadeSlideIn 0.3s ease forwards;
+}
+
+li:last-child { border-bottom: none; }
+
+li:hover:not(.completed) {
+  background-color: #e8f0fe;
+  cursor: pointer;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* ==========================
+   Checkbox
+========================== */
+li input[type="checkbox"] {
+  margin: 0;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  accent-color: #4CAF50;
+}
+
+/* ==========================
+   Task text
+========================== */
+.task-text {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+  color: #333;
+}
+
+/* ==========================
+   Task icons
+========================== */
+.task-icon { display: block; width: 20px; height: 20px; }
+
+.check-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  animation: popIn 0.35s ease forwards;
+}
+
+.check-icon { width: 20px; height: 20px; }
+
+li:not(.completed) .check-center {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ==========================
+   Delete button
+========================== */
+.delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 8px;
+  font-size: 13px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  background-color: #ff4444;
+  flex-shrink: 0;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  width: auto;
+}
+
+.delete-btn:hover {
+  background-color: #cc0000;
+  transform: translateX(2px);
+  box-shadow: 0 4px 10px rgba(204, 0, 0, 0.6);
+}
+
+.button-text { white-space: nowrap; }
+
+/* ==========================
+   Completed tasks
+========================== */
+li.completed {
+  background-color: #f0fdf4;
+  transform: scale(0.98);
+}
+
+li.completed .task-text {
+  text-decoration: line-through;
+  color: #777;
+}
+
+li.completed .check-center {
+  opacity: 1;
+  transform: scale(1);
+  animation: scaleIn 0.25s ease;
+}
+
+li.completed .check-icon {
+  stroke: #10b981;
+  fill: #10b981;
+}
+
+/* ==========================
+   Animations
+========================== */
+@keyframes scaleIn { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+@keyframes fadeSlideIn { 0% { opacity: 0; transform: translateY(-10px); } 100% { opacity: 1; transform: translateY(0); } }
+
+@keyframes popIn { 0% { opacity: 0; transform: scale(0.5); } 70% { opacity: 1; transform: scale(1.2); } 100% { transform: scale(1); } }
+
+/* ==========================
+   Responsive
+========================== */
+@media (max-width: 600px) {
+  li { gap: 8px; padding: 8px; }
+  .task-text { font-size: 14px; }
+  .delete-btn { padding: 4px 6px; font-size: 11px; gap: 3px; }
+  .button-text { display: none; }
+}
