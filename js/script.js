@@ -27,9 +27,6 @@ const CHECK_ICON = `
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-/* ==========================
-   🔤 CAMBIO DE IDIOMA
-========================== */
 function changeLanguage() {
   const lang = document.getElementById("languageSelect").value;
   localStorage.setItem("language", lang);
@@ -40,15 +37,11 @@ function changeLanguage() {
     else el.textContent = translations[lang][key];
   });
 
-  // Actualizar texto de los botones "Eliminar"
   document.querySelectorAll(".delete-btn .button-text").forEach((span) => {
     span.textContent = translations[lang].deleteButton;
   });
 }
 
-/* ==========================
-   ➕ AGREGAR TAREA
-========================== */
 function addTask() {
   const input = document.getElementById("taskInput");
   const text = input.value.trim();
@@ -69,30 +62,23 @@ function addTask() {
   input.value = "";
 }
 
-/* ==========================
-   🧱 CREAR ELEMENTO LI
-========================== */
 function createTaskElement(task, lang, index) {
   const li = document.createElement("li");
   li.className = task.completed ? "completed" : "";
 
-  // checkbox
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.checked = task.completed;
   checkbox.onchange = () => toggleTask(index);
 
-  // texto
   const textSpan = document.createElement("span");
   textSpan.className = "task-text";
   textSpan.textContent = task.text;
 
-  // check icon
   const checkSpan = document.createElement("span");
   checkSpan.className = "check-center";
   if (task.completed) checkSpan.innerHTML = CHECK_ICON;
 
-  // botón eliminar
   const deleteBtn = document.createElement("button");
   deleteBtn.className = "delete-btn";
   deleteBtn.innerHTML = `
@@ -105,9 +91,6 @@ function createTaskElement(task, lang, index) {
   return li;
 }
 
-/* ==========================
-   ✅ TOGGLE COMPLETED
-========================== */
 function toggleTask(index) {
   tasks[index].completed = !tasks[index].completed;
   localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -124,27 +107,20 @@ function toggleTask(index) {
   }
 }
 
-/* ==========================
-   🗑️ ELIMINAR TAREA
-========================== */
 function deleteTask(index) {
   const taskList = document.getElementById("taskList");
   const li = taskList.children[index];
 
   li.classList.add("fade-out");
-  setTimeout(() => {
+
+  li.addEventListener("animationend", () => {
     tasks.splice(index, 1);
     localStorage.setItem("tasks", JSON.stringify(tasks));
     li.remove();
-
-    // reindexar eventos de los demás <li>
     rebindTaskEvents();
-  }, 300);
+  }, { once: true });
 }
 
-/* ==========================
-   ♻️ REBIND EVENTOS TRAS CAMBIOS
-========================== */
 function rebindTaskEvents() {
   const lang = localStorage.getItem("language") || "es";
   const taskList = document.getElementById("taskList");
@@ -157,9 +133,6 @@ function rebindTaskEvents() {
   });
 }
 
-/* ==========================
-   🔁 CARGAR AL INICIO
-========================== */
 window.onload = () => {
   const savedLang = localStorage.getItem("language") || "es";
   document.getElementById("languageSelect").value = savedLang;

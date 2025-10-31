@@ -1,6 +1,4 @@
-/* ==========================
-   Base styling
-========================== */
+/* Base styling */
 body {
   font-family: Arial, sans-serif;
   font-size: 16px;
@@ -26,9 +24,7 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* ==========================
-   Form elements
-========================== */
+/* Form elements */
 select, input, button {
   margin: 8px 0;
   padding: 10px;
@@ -63,9 +59,7 @@ button:active {
   transform: scale(0.95);
 }
 
-/* ==========================
-   Task list styling
-========================== */
+/* Task list styling */
 ul { list-style: none; padding: 0; margin: 0; }
 
 li {
@@ -87,14 +81,22 @@ li:hover:not(.completed) {
 }
 
 .fade-out {
-  opacity: 0;
-  transform: translateX(-20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  animation: fadeOut 0.4s ease forwards;
 }
 
-/* ==========================
-   Checkbox
-========================== */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+}
+
+
+/* Checkbox */
 li input[type="checkbox"] {
   margin: 0;
   flex-shrink: 0;
@@ -103,9 +105,7 @@ li input[type="checkbox"] {
   accent-color: #4CAF50;
 }
 
-/* ==========================
-   Task text
-========================== */
+/* Task text */
 .task-text {
   flex: 1;
   min-width: 0;
@@ -116,9 +116,7 @@ li input[type="checkbox"] {
   color: #333;
 }
 
-/* ==========================
-   Task icons
-========================== */
+/*  Task icons */
 .task-icon { display: block; width: 20px; height: 20px; }
 
 .check-center {
@@ -139,9 +137,7 @@ li:not(.completed) .check-center {
   pointer-events: none;
 }
 
-/* ==========================
-   Delete button
-========================== */
+/* Delete button */
 .delete-btn {
   display: flex;
   align-items: center;
@@ -167,9 +163,7 @@ li:not(.completed) .check-center {
 
 .button-text { white-space: nowrap; }
 
-/* ==========================
-   Completed tasks
-========================== */
+/* Completed tasks */
 li.completed {
   background-color: #f0fdf4;
   transform: scale(0.98);
@@ -191,18 +185,14 @@ li.completed .check-icon {
   fill: #10b981;
 }
 
-/* ==========================
-   Animations
-========================== */
+/* Animations */
 @keyframes scaleIn { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
 @keyframes fadeSlideIn { 0% { opacity: 0; transform: translateY(-10px); } 100% { opacity: 1; transform: translateY(0); } }
 
 @keyframes popIn { 0% { opacity: 0; transform: scale(0.5); } 70% { opacity: 1; transform: scale(1.2); } 100% { transform: scale(1); } }
 
-/* ==========================
-   Responsive
-========================== */
+/* Responsive */
 @media (max-width: 600px) {
   li { gap: 8px; padding: 8px; }
   .task-text { font-size: 14px; }

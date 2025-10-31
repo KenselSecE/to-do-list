@@ -2,7 +2,7 @@ To-Do List App:
 A simple web application for managing tasks, built with HTML, CSS, and JavaScript. Users can add, complete, and delete tasks, with data persisted using localStorage. The app supports bilingual interfaces (English and Spanish) with a language toggle, making it accessible to diverse audiences.
 
 Demo:
-Live Demo (Update link after deploying to GitHub Pages)
+Live Demo https://kenselsece.github.io/to-do-list/
 
 Features:
 
